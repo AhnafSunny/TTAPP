@@ -1,4 +1,5 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
+
 
 # Create your views here.
 
@@ -17,6 +18,11 @@ def teamCreate(request):
 def matchCreate(request):
     return HttpResponse('<h1>match create</h1>')
 
+def playerBrowse(request):
+    allPlayers = player.objects.all()
+    context = {'all' : allPlayers }
+    return render(request, 'thettapp/playerbrowse.html',context)
+
 def playerAdd(request):
     s = request.POST['name']
     if(s == ""):
@@ -25,5 +31,5 @@ def playerAdd(request):
         p1 = player()
         p1.name = s
         p1.save()
-        return render(request,'thettapp/playerbrowse.html')
+        return redirect('/player/browse')
 

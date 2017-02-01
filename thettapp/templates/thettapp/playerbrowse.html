@@ -13,6 +13,29 @@
 
             <h2>Player List</h2>
 
+            <table>
+              <thead>
+
+              <th class="col-md-2">ID</th>
+              <th class="col-md-3">Name</th>
+              <th class="col-md-3">Action</th>
+              </thead>
+              <tbody>
+
+              {% for player in all %}
+              <tr class="tablerow" id="row">
+              <td class="col-md-2">{{ player.playerID }}</td>
+              <td class="col-md-3">{{ player.name }}</td>
+              <td class="col-md-3">
+                  <a class="btn btn-primary" href="/player/edit/{{ player.playerID }}">Edit</a>
+                  <a class="btn btn-danger" href="/player/delete/{{ player.playerID }}">Delete</a>
+              </td>
+              </tr>
+              {% endfor %}
+
+              </tbody>
+
+          </table>
 
 
 
